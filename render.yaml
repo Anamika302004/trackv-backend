@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: track-v-backend
+    runtime: python
+    pythonVersion: 3.9
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SUPABASE_URL
+        value: https://ntbnjqajwmuxhijztqsh.supabase.co
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: ENVIRONMENT
+        value: production
